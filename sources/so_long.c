@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bpatrici <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/29 13:53:18 by bpatrici          #+#    #+#             */
+/*   Updated: 2021/12/29 13:53:20 by bpatrici         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void	ft_show_image(t_var *v)
@@ -52,7 +64,7 @@ int	shutdown(int status, t_var *var)
 {
 	(void)var;
 	(void)status;
-	write(1, "Exit: [RED CROSS]\n", 18);
+	printf("Exit: [RED CROSS]\n");
 	exit (0);
 }
 

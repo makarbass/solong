@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bpatrici <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/29 13:53:28 by bpatrici          #+#    #+#             */
+/*   Updated: 2021/12/29 13:53:29 by bpatrici         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
@@ -30,8 +42,8 @@ typedef struct s_var
 }				t_var;
 
 char	**map_storage(char *path, t_var var);
-int		ft_lines(char *map, t_var var);
-int		ft_columns(char *map, t_var var);
+int		ft_lines(char *map);
+int		ft_columns(char *map);
 int		map_validity(t_var *var);
 int		read_image(t_var v);
 int		move_up(t_var *v, int xx, int yy);

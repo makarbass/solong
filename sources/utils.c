@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bpatrici <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/29 13:53:42 by bpatrici          #+#    #+#             */
+/*   Updated: 2021/12/29 13:55:32 by bpatrici         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void	ft_free_map(t_var *var, char *msg)
@@ -13,11 +25,11 @@ void	ft_free_map(t_var *var, char *msg)
 	free(var->map);
 	if (!var->ptr)
 		free(var->ptr);
-	printf("Exit: %s\n", msg);
+	printf("%s\n", msg);
 	exit (0);
 }
 
-int	ft_lines(char *map, t_var var)
+int	ft_lines(char *map)
 {
 	int		fd;
 	int		nb;
@@ -26,7 +38,10 @@ int	ft_lines(char *map, t_var var)
 	nb = 0;
 	fd = open(map, O_RDONLY);
 	if (fd < 0)
-		ft_free_map(&var, "Map error");
+	{
+		printf("Map open error\n");
+		exit(0);
+	}
 	line = get_next_line(fd);
 	while (line)
 	{
@@ -36,11 +51,14 @@ int	ft_lines(char *map, t_var var)
 	}
 	close(fd);
 	if (nb < 3)
-		ft_free_map(&var, "Map error");
+	{
+		printf("Map error\n");
+		exit(0);
+	}
 	return (nb);
 }
 
-int	ft_columns(char *map, t_var var)
+int	ft_columns(char *map)
 {
 	int		fd;
 	int		nb;
@@ -50,7 +68,10 @@ int	ft_columns(char *map, t_var var)
 	nb = -1;
 	fd = open(map, O_RDONLY);
 	if (fd < 0)
-		ft_free_map(&var, "Map error");
+	{
+		printf("Map open error\n");
+		return (0);
+	}
 	while (!ft_strchr(line, '\n'))
 	{
 		ret = read(fd, line, 1);
@@ -61,7 +82,7 @@ int	ft_columns(char *map, t_var var)
 	}
 	close(fd);
 	if (nb < 3)
-		ft_free_map(&var, "Map error");
+		return (0);
 	return (nb);
 }
 
